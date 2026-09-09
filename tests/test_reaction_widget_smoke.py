@@ -4,6 +4,7 @@ os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 from PySide6.QtWidgets import QApplication
 
 from ccra.reaction_coordinate.exporters import export_png, export_svg
+from ccra.reaction_coordinate.lifecycle import detach_reaction_editor
 from ccra.reaction_coordinate.storage import DiagramStore
 from ccra.reaction_coordinate.widgets import ReactionCoordinateWidget
 
@@ -34,5 +35,6 @@ def test_reaction_editor_constructs_edits_and_exports(tmp_path):
     assert png.exists() and png.stat().st_size > 0
     assert svg.exists() and svg.stat().st_size > 0
 
+    detach_reaction_editor(widget)
     widget.close()
     app.processEvents()
