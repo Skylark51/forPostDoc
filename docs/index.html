@@ -1,1 +1,223 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CCRA</title><style>body{font-family:system-ui,-apple-system,Segoe UI,sans-serif;margin:0;background:#0b1020;color:#e7ecf5}main{max-width:980px;margin:auto;padding:64px 24px}.card{background:#131a2d;border:1px solid #27304a;border-radius:16px;padding:24px;margin:18px 0}h1{font-size:46px;margin-bottom:8px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}.muted{color:#9da9c4}</style></head><body><main><h1>Computational Chemistry Report Assistant</h1><p class="muted">Project-first Gaussian / Google Drive / Google Sheets research workspace.</p><div class="card"><h2>Architecture first</h2><p>CCRA organizes research as <strong>Project → Module → File/Data</strong>. Analysis is subordinate to the project record.</p></div><div class="grid"><div class="card"><h2>Current projects</h2><p>Deformylation · FeNO6 · CoNO7 · Co_sidearm · Mn(IV)-dichloride</p></div><div class="card"><h2>Drive & Sheets</h2><p>Each project carries its Drive folder ID, spreadsheet ID, and workbook-tab schema.</p></div><div class="card"><h2>Raw data</h2><p>Imported Gaussian outputs are hashed and indexed with final energy, charge, multiplicity and extracted XYZ.</p></div></div><div class="card"><h2>Privacy boundary</h2><p>The public repository contains integration metadata and code, not spreadsheet cell contents, OAuth secrets, or Gaussian output files.</p></div></main></body></html>
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Computational Chemistry Report Assistant</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8fa;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --muted: #667085;
+      --line: #dfe3e8;
+      --accent: #2457a6;
+      --soft: #eef3fb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", Arial, sans-serif;
+      line-height: 1.65;
+    }
+    main {
+      width: min(1040px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 48px 0 72px;
+    }
+    header { margin-bottom: 34px; }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(30px, 5vw, 44px);
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+    h2 {
+      margin: 0 0 14px;
+      font-size: 21px;
+      letter-spacing: -0.02em;
+    }
+    p { margin: 8px 0; }
+    .subtitle { color: var(--muted); font-size: 17px; }
+    .status {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 6px 10px;
+      border: 1px solid #cdd8ea;
+      border-radius: 6px;
+      background: var(--soft);
+      color: #254d88;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    section {
+      margin-top: 22px;
+      padding: 24px 26px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    .flow {
+      padding: 14px 16px;
+      margin-top: 14px;
+      background: #fafbfc;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      font-family: Consolas, "SFMono-Regular", monospace;
+      font-size: 14px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 15px;
+    }
+    th, td {
+      padding: 11px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #fafbfc;
+      font-weight: 650;
+    }
+    tr:last-child td { border-bottom: 0; }
+    ul { margin: 8px 0 0 20px; padding: 0; }
+    li { margin: 6px 0; }
+    .muted { color: var(--muted); }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    a.button {
+      display: inline-block;
+      padding: 8px 12px;
+      color: var(--accent);
+      background: #fff;
+      border: 1px solid #b8c6da;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a.button:hover { background: var(--soft); }
+    code {
+      padding: 1px 5px;
+      background: #f1f3f5;
+      border-radius: 4px;
+    }
+    footer {
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 680px) {
+      main { width: min(100% - 24px, 1040px); padding-top: 30px; }
+      section { padding: 20px 18px; }
+      th:nth-child(3), td:nth-child(3) { display: none; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Computational Chemistry Report Assistant</h1>
+    <p class="subtitle">DFT 계산 데이터를 프로젝트별로 정리하고, 주간 연구보고서와 Supporting Information 작성에 활용하기 위한 연구 관리 도구입니다.</p>
+    <span class="status">현재 단계: 프로젝트·데이터 관리 기반 구축</span>
+  </header>
+
+  <section>
+    <h2>프로그램의 기본 구조</h2>
+    <p><strong>기능보다 프로젝트 관리 구조를 우선합니다.</strong> 모든 계산 파일, Google Drive 폴더, Google Sheet, 추출 데이터는 반드시 하나의 프로젝트에 소속됩니다.</p>
+    <div class="flow">Project → Module → Gaussian file → Raw data → 분석 결과 → Report / SI</div>
+  </section>
+
+  <section>
+    <h2>현재 관리 중인 프로젝트</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>프로젝트</th>
+          <th>주요 관리 단위</th>
+          <th>연동 대상</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. Deformylation_UNIST</strong></td>
+          <td>Normal / Protonated mechanism, Hydroperoxo 관련 계산</td>
+          <td>프로젝트 Drive + Google Sheet</td>
+        </tr>
+        <tr>
+          <td><strong>2. FeNO6_UNIST</strong></td>
+          <td>FeNO6/7, HNO2 binding, protonation, N–O cleavage, TD-DFT</td>
+          <td>프로젝트 Drive + Google Sheet</td>
+        </tr>
+        <tr>
+          <td><strong>4. CoNO7_UNIST</strong></td>
+          <td>CoNO7 및 Co–nitrite 계산</td>
+          <td>프로젝트 Drive + Google Sheet</td>
+        </tr>
+        <tr>
+          <td><strong>5. Co_sidearm</strong></td>
+          <td>Main mechanism, Rebound, Radical coupling, TD-DFT</td>
+          <td>프로젝트 Drive + Google Sheet</td>
+        </tr>
+        <tr>
+          <td><strong>6. Mn(IV)-dichloride</strong></td>
+          <td>Spin state, 구조 비교, TD-DFT</td>
+          <td>프로젝트 Drive + Google Sheet</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Gaussian output 파일을 불러오면 관리할 데이터</h2>
+    <ul>
+      <li>원본 파일명과 프로젝트 소속</li>
+      <li>Normal termination 여부</li>
+      <li>Charge / multiplicity / method / basis set</li>
+      <li>최종 electronic energy와 이후 상대에너지 계산에 사용할 raw value</li>
+      <li>최종 optimized geometry와 자동 추출된 XYZ</li>
+      <li>향후 Mulliken spin density, frequency, TD-DFT, geometry parameter 등 분석 데이터</li>
+    </ul>
+    <p class="muted">원본 Gaussian 파일은 수정하지 않고, 데이터베이스에는 추출값과 파일 식별 정보만 저장하는 것을 기본 원칙으로 합니다.</p>
+  </section>
+
+  <section>
+    <h2>Google Drive / Google Sheets 연동 방향</h2>
+    <p>각 프로젝트는 현재 사용 중인 <strong>Drive 폴더와 Google Sheet를 개별적으로 연결</strong>합니다. 프로그램에서는 프로젝트를 선택한 뒤 해당 Drive와 Sheet를 바로 확인하고, 계산 결과와 기존 정리표를 같은 프로젝트 단위에서 다룰 수 있도록 구성합니다.</p>
+    <p>OAuth 인증정보와 실제 연구 데이터는 공개 저장소에 저장하지 않습니다.</p>
+  </section>
+
+  <section>
+    <h2>현재 구현된 기반</h2>
+    <ul>
+      <li>프로젝트별 독립 설정 파일</li>
+      <li>PySide6 기반 프로젝트 중심 GUI 골격</li>
+      <li><code>.out</code> / <code>.log</code> 다중 불러오기 및 drag & drop</li>
+      <li>SQLite 기반 프로젝트별 raw-data 저장</li>
+      <li>SHA-256 기반 중복 파일 확인</li>
+      <li>최종 SCF energy 및 XYZ 추출</li>
+      <li>Google Drive / Sheets OAuth 연동 모듈</li>
+    </ul>
+    <div class="links">
+      <a class="button" href="https://github.com/Skylark51/forPostDoc">GitHub 저장소 보기</a>
+      <a class="button" href="https://github.com/Skylark51/forPostDoc/tree/main/docs">페이지 소스 보기</a>
+    </div>
+  </section>
+
+  <footer>
+    Computational Chemistry Report Assistant · Skylark51/forPostDoc
+  </footer>
+</main>
+</body>
+</html>
