@@ -1,0 +1,9 @@
+{
+  "key": "co_sidearm",
+  "title": "5. Co_sidearm",
+  "drive_folder_id": "1KvHljW-NOLT-ogWhMu-w3IrQtrKH82AK",
+  "drive_folder_title": "5. Co_sidearm",
+  "sheet": {"title": "5. Co_sidearm", "spreadsheet_id": "1-AzHtKLjet6sRdT3Z7OnhTMgS5kTwsJSC_C3SGwCPZc", "sheet_names": ["Main Mechanism", "Sub 1. Rebound", "Sub 2. Radical Coupling", "받은 구조에서 investigation", "메커니즘 검증", "TD-DFT"]},
+  "aliases": ["Co_sidearm", "TBDAP", "photocleavage"],
+  "modules": ["Main mechanism", "Rebound", "Radical coupling", "Structure investigation", "Mechanism validation", "TD-DFT"]
+}

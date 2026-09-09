@@ -1,0 +1,9 @@
+{
+  "key": "deformylation",
+  "title": "1. Deformylation_UNIST",
+  "drive_folder_id": "1kKAnYQIQBIA-bou2WYOliPGJ3_LKd6-g",
+  "drive_folder_title": "1. Deformylation",
+  "sheet": {"title": "1. Deformylation_UNIST", "spreadsheet_id": "1swFuOm_Uh5gfbOxmnUawi7Tt7T8p0O4IiW-tse_7uCc", "sheet_names": ["Fe", "Mn", "Co", "1. Normal Mechanism", "2. Protonated Mechanism", "3. Hydroperoxo Formation", "4. Hydroperoxo Reactivity"]},
+  "aliases": ["deformylation", "peroxyhemiacetal"],
+  "modules": ["Normal mechanism", "Protonated mechanism", "Hydroperoxo formation", "Hydroperoxo reactivity"]
+}
