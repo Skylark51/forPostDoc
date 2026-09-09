@@ -2,21 +2,30 @@ from __future__ import annotations
 
 from html import escape
 from pathlib import Path
-
-from PySide6.QtCore import QRectF, QSize
-from PySide6.QtGui import QColor, QImage, QPainter
-from PySide6.QtSvg import QSvgGenerator
-from PySide6.QtWidgets import QApplication, QGraphicsScene
+from typing import TYPE_CHECKING
 
 from .models import Diagram
 
+if TYPE_CHECKING:
+    from PySide6.QtWidgets import QGraphicsScene
 
-def _source_rect(scene: QGraphicsScene) -> QRectF:
+
+def _qt():
+    from PySide6.QtCore import QRectF, QSize
+    from PySide6.QtGui import QColor, QImage, QPainter
+    from PySide6.QtSvg import QSvgGenerator
+    from PySide6.QtWidgets import QApplication
+    return QRectF, QSize, QColor, QImage, QPainter, QSvgGenerator, QApplication
+
+
+def _source_rect(scene):
+    QRectF, *_ = _qt()
     rect = scene.itemsBoundingRect().adjusted(-40, -40, 40, 40)
     return rect if not rect.isEmpty() else QRectF(0, 0, 800, 600)
 
 
-def export_png(scene: QGraphicsScene, destination: Path, scale: float = 2.5) -> Path:
+def export_png(scene: "QGraphicsScene", destination: Path, scale: float = 2.5) -> Path:
+    QRectF, _, QColor, QImage, QPainter, _, _ = _qt()
     destination = Path(destination)
     rect = _source_rect(scene)
     width = max(1, int(rect.width() * scale))
@@ -32,7 +41,8 @@ def export_png(scene: QGraphicsScene, destination: Path, scale: float = 2.5) -> 
     return destination
 
 
-def export_svg(scene: QGraphicsScene, destination: Path) -> Path:
+def export_svg(scene: "QGraphicsScene", destination: Path) -> Path:
+    QRectF, QSize, _, _, QPainter, QSvgGenerator, _ = _qt()
     destination = Path(destination)
     rect = _source_rect(scene)
     generator = QSvgGenerator()
@@ -46,7 +56,8 @@ def export_svg(scene: QGraphicsScene, destination: Path) -> Path:
     return destination
 
 
-def copy_as_image(scene: QGraphicsScene, scale: float = 2.0) -> None:
+def copy_as_image(scene: "QGraphicsScene", scale: float = 2.0) -> None:
+    QRectF, _, QColor, QImage, QPainter, _, QApplication = _qt()
     rect = _source_rect(scene)
     image = QImage(max(1, int(rect.width() * scale)), max(1, int(rect.height() * scale)), QImage.Format.Format_ARGB32)
     image.fill(QColor("white"))
