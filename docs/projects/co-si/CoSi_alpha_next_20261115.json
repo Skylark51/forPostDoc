@@ -1,0 +1,212 @@
+{
+  "format": "cosi-alpha-next-v1",
+  "preparedAt": "2026-11-15T02:17:32.836Z",
+  "status": "running-first-stage",
+  "localDirectory": "E:\\이영섭\\01_연구\\01_계산화학\\8.SNU_SiCo",
+  "serverDirectory": "/home/skylark/EightSNU/AfterPhD",
+  "noNewSubdirectories": true,
+  "method": "ub3lyp/def2svp scrf=(cpcm,solvent=benzene) scf=(xqc,maxconventionalcycles=60) nosymm EmpiricalDispersion=GD3BJ",
+  "charge": 0,
+  "multiplicity": 3,
+  "electrons": 370,
+  "nalpha": 186,
+  "nbeta": 184,
+  "resources": {
+    "cores": 16,
+    "memoryGiB": 60
+  },
+  "jobs": [
+    {
+      "file": "3-CoSi-alpha-INT1-NN-scan-20261115.inp",
+      "stage": "ready",
+      "purpose": "Nalpha-Nbeta cleavage scan",
+      "parentCheckpoint": "3-CoSi-alpha-INT1-seed-own-sp-stable.chk",
+      "source": "Output\\AllOutput\\3-Path1-forSiNBond-opt-freq-ts-freq-ircfwd-opt-freq.out",
+      "sourceGeometry": "analysis_summary alpha_INT1_Bz, 98 atoms; rounded original output coordinates",
+      "atoms": {
+        "Co": 1,
+        "Si": 2,
+        "Nalpha": 39,
+        "Nbeta": 41,
+        "Ngamma": 40,
+        "adamantylCarbon": 42
+      },
+      "scan": {
+        "startAngstrom": 1.319250855,
+        "endAngstrom": 2.519250855,
+        "steps": 24,
+        "incrementAngstrom": 0.05
+      },
+      "frozen": "Co1-Nalpha39 at 2.078349718 Angstrom; search bias only, release for TS/endpoint verification",
+      "sha256": "3f2c0ede406ff00856f504e6e5d3b3f05726ee605cc3a14b4f54c73aded116a0",
+      "node": "lion28",
+      "status": "running",
+      "stageKind": "scan_full",
+      "inputConvention": "/home/skylark/script/input/input.sh templates; %CPU=0-15, %mem=60Gb, SCF=(XQC,MaxConventionalCycles=60), CPCM benzene, GD3BJ",
+      "checkpoint": "/home/skylark/chk/3-CoSi-alpha-INT1-NN-scan-20261115.chk",
+      "startedAt": "2026-11-15T11:27:04.114571+09:00",
+      "output": "3-CoSi-alpha-INT1-NN-scan-20261115.out",
+      "processes": [
+        "101219       03:50  0.0 g16             g16",
+        "101224       03:50 1572 l502.exe        /opt/gaussian/g16/l502.exe 8053063680 /scratch/skylark/3-CoSi-alpha-INT1-NN-scan-20261115.chk 1 /scratch/skylark/wf.j5wZRYrM/Gau-101224.int 0 /scratch/skylark/wf.j5wZRYrM/Gau-101224.rwf 0 /scratch/skylark/wf.j5wZRYrM/Gau-101224.d2e 0 /scratch/skylark/wf.j5wZRYrM/Gau-101224.skr 0 /scratch/skylark/wf.j5wZRYrM/Gau-101219.inp 0 no-output-file 0 /scratch/skylark/wf.j5wZRYrM/Gau-101224.nex 0 nofchk 0"
+      ],
+      "benzeneConfirmed": true
+    },
+    {
+      "file": "3-CoSi-alpha-INT1-SiN-scan-20261115.inp",
+      "stage": "ready",
+      "purpose": "Si-Nalpha formation scan",
+      "parentCheckpoint": "3-CoSi-alpha-INT1-seed-own-sp-stable.chk",
+      "source": "Output\\AllOutput\\3-Path1-forSiNBond-opt-freq-ts-freq-ircfwd-opt-freq.out",
+      "sourceGeometry": "analysis_summary alpha_INT1_Bz, 98 atoms; rounded original output coordinates",
+      "atoms": {
+        "Co": 1,
+        "Si": 2,
+        "Nalpha": 39,
+        "Nbeta": 41,
+        "Ngamma": 40,
+        "adamantylCarbon": 42
+      },
+      "scan": {
+        "startAngstrom": 2.818176743,
+        "endAngstrom": 1.818176743,
+        "steps": 20,
+        "incrementAngstrom": -0.05
+      },
+      "frozen": "Co1-Nalpha39 at 2.078349718 Angstrom; search bias only, release for TS/endpoint verification",
+      "sha256": "7175cc922b56c7ad49906c1c3b3043c89840ca5117f45f1ccd90292ba31a5ccd",
+      "node": "lion39",
+      "status": "running",
+      "stageKind": "scan_full",
+      "inputConvention": "/home/skylark/script/input/input.sh templates; %CPU=0-15, %mem=60Gb, SCF=(XQC,MaxConventionalCycles=60), CPCM benzene, GD3BJ",
+      "checkpoint": "/home/skylark/chk/3-CoSi-alpha-INT1-SiN-scan-20261115.chk",
+      "startedAt": "2026-11-15T11:27:04.114939+09:00",
+      "output": "3-CoSi-alpha-INT1-SiN-scan-20261115.out",
+      "processes": [
+        "2260321       03:50  0.0 g16             g16",
+        "2260383       03:49 1569 l502.exe        /opt/gaussian/g16/l502.exe 8053063680 /scratch/skylark/3-CoSi-alpha-INT1-SiN-scan-20261115.chk 1 /scratch/skylark/wf.SCzLKxEQ/Gau-2260383.int 0 /scratch/skylark/wf.SCzLKxEQ/Gau-2260383.rwf 0 /scratch/skylark/wf.SCzLKxEQ/Gau-2260383.d2e 0 /scratch/skylark/wf.SCzLKxEQ/Gau-2260383.skr 0 /scratch/skylark/wf.SCzLKxEQ/Gau-2260321.inp 0 no-output-file 0 /scratch/skylark/wf.SCzLKxEQ/Gau-2260383.nex 0 nofchk 0"
+      ],
+      "benzeneConfirmed": true
+    },
+    {
+      "file": "3-CoSi-alpha-TS2-fromSinglet-ts-freq-20261115.inp",
+      "stage": "ready",
+      "purpose": "Unconstrained triplet TS search from singlet TS2 geometry",
+      "source": "Output_Organized/Alpha/M1/1-CoSi-alpha-TS2-opt2-freq-ts2-freq-freq.out",
+      "sourceSha256": "db96a925d65e41bc4c147947ad9b848dbef55f8cac05aa011df3f95865333802",
+      "atoms": {
+        "Co": 1,
+        "Si": 2,
+        "Nalpha": 38,
+        "Nbeta": 39,
+        "Ngamma": 37,
+        "adamantylCarbon": 74
+      },
+      "sha256": "c8f0df69683175e5b4aa1da16a33d18f1e5d30fcdf95b0559840f9d0e4d1ec55",
+      "node": "lion51",
+      "status": "running",
+      "stageKind": "ts",
+      "inputConvention": "/home/skylark/script/input/input.sh templates; %CPU=0-15, %mem=60Gb, SCF=(XQC,MaxConventionalCycles=60), CPCM benzene, GD3BJ",
+      "checkpoint": "/home/skylark/chk/3-CoSi-alpha-TS2-fromSinglet-ts-freq-20261115.chk",
+      "startedAt": "2026-11-15T11:27:04.115217+09:00",
+      "output": "3-CoSi-alpha-TS2-fromSinglet-ts-freq-20261115.out",
+      "processes": [
+        "1830661       03:50  0.0 g16             g16",
+        "1830709       03:49 1583 l502.exe        /opt/gaussian/g16/l502.exe 8053063680 /scratch/skylark/3-CoSi-alpha-TS2-fromSinglet-ts-freq-20261115.chk 1 /scratch/skylark/wf.pz0g8FmZ/Gau-1830709.int 0 /scratch/skylark/wf.pz0g8FmZ/Gau-1830709.rwf 0 /scratch/skylark/wf.pz0g8FmZ/Gau-1830709.d2e 0 /scratch/skylark/wf.pz0g8FmZ/Gau-1830709.skr 0 /scratch/skylark/wf.pz0g8FmZ/Gau-1830661.inp 0 no-output-file 0 /scratch/skylark/wf.pz0g8FmZ/Gau-1830709.nex 0 nofchk 0"
+      ],
+      "benzeneConfirmed": true
+    },
+    {
+      "file": "3-CoSi-alpha-INT2-fromSinglet-opt-freq-20261115.inp",
+      "stage": "ready",
+      "purpose": "Unconstrained triplet minimum search from singlet INT2 geometry; provisional candidate only",
+      "source": "Output_Organized/Alpha/M1/1-CoSi-alpha-INT1-pre-opt2-freq-ts2-freq-ircfwd-opt-freq-freq.out",
+      "sourceSha256": "b60deb7b47552f2ee639778f131e2c5434da7efa6906e3490fe392d8c946a9d0",
+      "atoms": {
+        "Co": 1,
+        "Si": 2,
+        "Nalpha": 38,
+        "Nbeta": 39,
+        "Ngamma": 37,
+        "adamantylCarbon": 74
+      },
+      "sha256": "775b3dde64e5931e8a3d8d411d816d49d26bb9d1e758ff2cdef1ee28920eaed1",
+      "node": "lion34",
+      "status": "running",
+      "stageKind": "opt",
+      "inputConvention": "/home/skylark/script/input/input.sh templates; %CPU=0-15, %mem=60Gb, SCF=(XQC,MaxConventionalCycles=60), CPCM benzene, GD3BJ",
+      "checkpoint": "/home/skylark/chk/3-CoSi-alpha-INT2-fromSinglet-opt-freq-20261115.chk",
+      "startedAt": "2026-11-15T11:27:04.115485+09:00",
+      "output": "3-CoSi-alpha-INT2-fromSinglet-opt-freq-20261115.out",
+      "processes": [
+        "99992       03:50  0.0 g16             g16",
+        "99995       03:49 1583 l502.exe        /opt/gaussian/g16/l502.exe 8053063680 /scratch/skylark/3-CoSi-alpha-INT2-fromSinglet-opt-freq-20261115.chk 1 /scratch/skylark/wf.6Wwj2gnt/Gau-99995.int 0 /scratch/skylark/wf.6Wwj2gnt/Gau-99995.rwf 0 /scratch/skylark/wf.6Wwj2gnt/Gau-99995.d2e 0 /scratch/skylark/wf.6Wwj2gnt/Gau-99995.skr 0 /scratch/skylark/wf.6Wwj2gnt/Gau-99992.inp 0 no-output-file 0 /scratch/skylark/wf.6Wwj2gnt/Gau-99995.nex 0 nofchk 0"
+      ],
+      "benzeneConfirmed": true
+    },
+    {
+      "file": "3-CoSi-alpha-TS2-irc-forward-20261115.inp",
+      "stage": "conditional",
+      "purpose": "IRC forward",
+      "parentCheckpoint": "3-CoSi-alpha-TS2-fromSinglet-ts-freq-20261115.chk",
+      "requires": "TS candidate unconstrained convergence, exactly one imaginary frequency with Nalpha-Nbeta/Si-Nalpha reaction mode; current TS checkpoint must contain matching Hessian",
+      "sha256": "d0718c7cb340cb9c082034139679bffcc0a22c36393d22370de13bf77f9bd196"
+    },
+    {
+      "file": "3-CoSi-alpha-TS2-irc-forward-endpoint-opt-freq-20261115.inp",
+      "stage": "conditional",
+      "purpose": "Unconstrained IRC endpoint optimization and frequencies",
+      "parentCheckpoint": "3-CoSi-alpha-TS2-irc-forward-20261115.chk",
+      "requires": "Correct IRC path and actual endpoint reached; 100 points alone does not prove endpoint convergence",
+      "sha256": "e77649c9d978aff1ef765f23b397ffb0ee9825fd02ed0fc22bcb58f96affbbe1"
+    },
+    {
+      "file": "3-CoSi-alpha-TS2-irc-reverse-20261115.inp",
+      "stage": "conditional",
+      "purpose": "IRC reverse",
+      "parentCheckpoint": "3-CoSi-alpha-TS2-fromSinglet-ts-freq-20261115.chk",
+      "requires": "TS candidate unconstrained convergence, exactly one imaginary frequency with Nalpha-Nbeta/Si-Nalpha reaction mode; current TS checkpoint must contain matching Hessian",
+      "sha256": "c79f8afb1e432a34f533e7f0e18d067f3159a4bf3bfe79ebcf9c69122ea86bff"
+    },
+    {
+      "file": "3-CoSi-alpha-TS2-irc-reverse-endpoint-opt-freq-20261115.inp",
+      "stage": "conditional",
+      "purpose": "Unconstrained IRC endpoint optimization and frequencies",
+      "parentCheckpoint": "3-CoSi-alpha-TS2-irc-reverse-20261115.chk",
+      "requires": "Correct IRC path and actual endpoint reached; 100 points alone does not prove endpoint convergence",
+      "sha256": "f645dd1a32b0106f69b344b53541feeb1d6638811852d47dd13bf904cb426f22"
+    }
+  ],
+  "acceptance": [
+    "A constrained scan maximum is a seed, not a TS. Release all constraints for TS and endpoints.",
+    "TS must have exactly one imaginary frequency with the target N-N cleavage / Si-N formation motion.",
+    "Optimize and frequency-check both IRC endpoints; identify reactant/product from structure rather than forward/reverse name.",
+    "Reactant must connect to alpha INT1 without passing through a gamma bridge. Monitor Co-Nalpha, Co-Ngamma, Si-Nalpha, Si-Ngamma, Nalpha-Nbeta and spin continuously.",
+    "The independently optimized singlet-derived triplet INT2 seed is not assigned as alpha-derived until IRC confirms connectivity.",
+    "Check wavefunction stability at the final TS/minima. If Stable=Opt changes the state, reoptimize and recompute frequencies/IRC as needed.",
+    "After SVP connectivity and minima/TS validation, prepare matching-geometry def2-TZVPP single points and common-reference thermochemistry."
+  ],
+  "execution": {
+    "script": "/home/skylark/script/wf",
+    "mode": "--worker",
+    "scope": "first stage only; no automatic TS/IRC continuation for scans",
+    "nodePreference": [
+      28,
+      29,
+      30,
+      38,
+      39,
+      40,
+      48,
+      49,
+      50,
+      51,
+      34,
+      44,
+      21,
+      25
+    ],
+    "workDirectorySubfolders": false
+  },
+  "checkedAt": "2026-11-15T11:30:54.884338+09:00"
+}

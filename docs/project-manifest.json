@@ -1,0 +1,47 @@
+{
+  "packagedAt": "2026-11-15T02:44:14.749Z",
+  "projects": [
+    {
+      "id": "mn-peroxo",
+      "name": "Mn(III)–peroxo",
+      "sourceFile": "Mn_peroxo_project_dashboard.html",
+      "sourceModified": "2026-11-15T02:16:38.000Z",
+      "sourceSha256": "a1704496b1f8f71792f38abf5e8cdd63c869b5739fb2734413a48f2228c42054",
+      "supportFiles": [],
+      "url": "projects/mn-peroxo/"
+    },
+    {
+      "id": "co-si",
+      "name": "Co–Si α · γ",
+      "sourceFile": "CoSi_Alpha_Gamma_Pathway_Table.html",
+      "sourceModified": "2026-11-15T02:31:40.000Z",
+      "sourceSha256": "b3298c6b1c291ec317ab538a99064201adc7778bd47b285bfe5452867cb013da",
+      "supportFiles": [
+        "cosi-dashboard/dashboard.css",
+        "Spin_Analysis_INT1_INT3/analysis.html",
+        "CoSi_File_Rename_Review.html",
+        "CoSi_INT1_completed_20261115.json",
+        "3-CoSi-alpha-INT1-NN-scan-20261115.inp",
+        "3-CoSi-alpha-INT1-SiN-scan-20261115.inp",
+        "3-CoSi-alpha-TS2-fromSinglet-ts-freq-20261115.inp",
+        "3-CoSi-alpha-INT2-fromSinglet-opt-freq-20261115.inp",
+        "CoSi_first_stage_status_20261115.json",
+        "CoSi_alpha_next_20261115.json",
+        "CoSi_alpha_next_20261115.txt",
+        "cosi-dashboard/dashboard.js"
+      ],
+      "url": "projects/co-si/"
+    },
+    {
+      "id": "v-oxo-peroxo",
+      "name": "V–Oxo / Peroxo",
+      "sourceFile": "V_Oxo_Peroxo_Calculation_Checklist.html",
+      "sourceModified": "2026-11-15T02:43:40.000Z",
+      "sourceSha256": "da2f05d5b33427e107305d5b36e1edb538026e5fc980beec32bf3d59d8081112",
+      "supportFiles": [
+        "V_Oxo_Peroxo_Start_Pack.zip"
+      ],
+      "url": "projects/v-oxo-peroxo/"
+    }
+  ]
+}

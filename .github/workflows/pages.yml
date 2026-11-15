@@ -1,11 +1,9 @@
-name: Deploy GitHub Pages
+name: Deploy dashboards
 
 on:
   push:
-    branches: ["main"]
-    paths:
-      - "docs/**"
-      - ".github/workflows/pages.yml"
+    branches: [main]
+    paths: ['docs/**', '.github/workflows/pages.yml']
   workflow_dispatch:
 
 permissions:
@@ -14,7 +12,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: true
 
 jobs:
@@ -24,17 +22,10 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload static site
-        uses: actions/upload-pages-artifact@v4
+      - uses: actions/checkout@v6
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
         with:
-          path: ./docs
-
-      - name: Deploy to GitHub Pages
-        id: deployment
+          path: docs
+      - id: deployment
         uses: actions/deploy-pages@v4
