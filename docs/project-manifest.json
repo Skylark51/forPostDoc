@@ -1,5 +1,5 @@
 {
-  "packagedAt": "2026-11-15T02:44:14.749Z",
+  "packagedAt": "2026-11-15T19:33:49.164701+00:00",
   "projects": [
     {
       "id": "mn-peroxo",
@@ -36,12 +36,18 @@
       "id": "v-oxo-peroxo",
       "name": "V–Oxo / Peroxo",
       "sourceFile": "V_Oxo_Peroxo_Calculation_Checklist.html",
-      "sourceModified": "2026-11-15T02:43:40.000Z",
-      "sourceSha256": "da2f05d5b33427e107305d5b36e1edb538026e5fc980beec32bf3d59d8081112",
+      "sourceModified": "2026-11-15T19:33:44.111962+00:00",
       "supportFiles": [
         "V_Oxo_Peroxo_Start_Pack.zip"
       ],
       "url": "projects/v-oxo-peroxo/"
+    },
+    {
+      "id": "ni-dithiocarbazate",
+      "name": "Ni(II) bis(dithiocarbazate)",
+      "sourceModified": "2026-11-15T19:33:49.164701+00:00",
+      "supportFiles": [],
+      "url": "projects/ni-dithiocarbazate/"
     }
   ]
 }
