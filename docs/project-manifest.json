@@ -46,8 +46,21 @@
       "id": "ni-dithiocarbazate",
       "name": "Ni(II) bis(dithiocarbazate)",
       "sourceModified": "2026-11-15T19:33:49.164701+00:00",
-      "supportFiles": [],
+      "supportFiles": [
+        "dashboard.js"
+      ],
       "url": "projects/ni-dithiocarbazate/"
+    },
+    {
+      "id": "bodipy",
+      "name": "BODIPY · Se / Te",
+      "sourceFile": "workbook_data.json",
+      "sourceModified": "2026-11-16T06:57:19+09:00",
+      "supportFiles": [
+        "progress.json",
+        "dashboard.js"
+      ],
+      "url": "projects/bodipy/"
     }
   ]
 }

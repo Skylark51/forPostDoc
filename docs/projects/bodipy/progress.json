@@ -1,0 +1,788 @@
+{
+  "checked": "2026-11-16T06:57:19.929284+09:00",
+  "source_url": "https://docs.google.com/spreadsheets/d/1DulLwW5JsiFnXsbKfK5sxOodnSTiKTo8J5F3iOmLVh4/edit",
+  "summary": [
+    [
+      "핵심 질문",
+      "확인 결과",
+      "판정·다음 행동"
+    ],
+    [
+      "교수님 가설: hydride 먼저, proton 다음",
+      "Se-P1~P4는 C–H→DDQ, N–H→Et3N 순서를 구조로 확인. 두 번 반복.",
+      "가설을 지지. 경쟁 proton-first/HAT/SET보다 우세하다는 정량 입증은 별도."
+    ],
+    [
+      "초반부터 E–E cleavage까지",
+      "Se의 앞 4 H-transfer 세트는 확보. 검토한 cleavage 후보는 다중 작은 허수진동.",
+      "검증된 cleavage TS 및 후반 출발물질과의 연결이 남음."
+    ],
+    [
+      "Se/Te 분리",
+      "2DDQ의 1-Se-5a 파일은 실제 Te 두 원자.",
+      "Te 전반으로 재분류. 파일명 기반 원소 판정 금지."
+    ],
+    [
+      "Se annulation",
+      "69원자 중성 모델의 proton 이동, BF3 치환, 두 번째 B–N 형성 확보.",
+      "첫 proton 이동 PC 작은 허수진동 잔존."
+    ],
+    [
+      "Te annulation",
+      "같은 69원자 모델의 세 단계 모두 서버·로컬 자료로 확인.",
+      "마지막 B–N 형성 ΔG‡는 Se보다 약 3.76 kcal/mol 높음."
+    ],
+    [
+      "에너지 정합성",
+      "원본 Se/Te의 +TΔS, 빈 기준셀, 분산 기준 누락 오류 발견.",
+      "Gaussian Gcorr로 재계산. 원본 표시 Gibbs는 사용하지 않음."
+    ],
+    [
+      "실제 input 오류",
+      "Te 분기의 %chk가 .inp를 가리켜 현재 inp가 223MB binary.",
+      "입력 복구·checkpoint 경로 수정 필요. 원본 수정/재제출은 하지 않음."
+    ],
+    [
+      "최신 계산 경과",
+      "Se forEEbreak endpoint TZVPP가 11/16 01:26 KST 정상 종료.",
+      "실제 변화는 proton transfer. Se–Se 결합은 유지."
+    ],
+    [
+      "범위",
+      "구글 5개 탭, 로컬 63 out, 서버 선택 323 out 및 추가 TS/IRC/opt 25 out 대조.",
+      "현재 입력과 실행 당시 output route를 구분. 전체 compute-node 실행상태는 미확인."
+    ],
+    [
+      "기본 계산 기준",
+      "Gcomp = E(def2-TZVPP) + Thermal correction to Gibbs Free Energy(def2-SVP).",
+      "B3LYP/CPCM(acetonitrile), 298.15 K. 외부 D3 제외. 각 단계 자체 RC=0."
+    ],
+    [
+      "기구 개괄",
+      "전반: 두 번의 hydride/proton 제거 후 E–E 절단·E–C 형성 후보. 후반: proton 이동 후 BF3 배위 및 B–N 고리 닫힘/HF 생성.",
+      "전반과 후반 사이 연결 미검증. 전 구간의 RDS나 수율 원인을 확정하지 않음."
+    ]
+  ],
+  "issues": [
+    {
+      "id": "B01",
+      "priority": "높음",
+      "title": "엔트로피 부호",
+      "source": "Se (정리)!Q15:Q32; Te!Q27:Q38",
+      "fact": "+(H−Href)×298.15/1000 사용. G에는 −TΔS가 필요.",
+      "action": "모든 주경로를 Gaussian Gcorr로 재계산. 원본은 보존."
+    },
+    {
+      "id": "B02",
+      "priority": "높음",
+      "title": "빈 셀을 기준으로 참조",
+      "source": "Se (정리)!L81:T85",
+      "fact": "D$422, E$422 등 비어 있는 422행을 참조. 수백만 kcal/mol은 계산 결과가 아닌 수식 오류.",
+      "action": "동일 조성 RC를 기준으로 새 정리본에서만 계산."
+    },
+    {
+      "id": "B03",
+      "priority": "높음",
+      "title": "Te의 Dispersion 누락 기준",
+      "source": "Te!R27:R33, I36",
+      "fact": "Dispersion I36이 빈 상태에서 절대 D3(약 −0.15 Eh)를 상대값으로 더함. 약 −100 kcal/mol 가짜 안정화.",
+      "action": "분산 보정 출처와 이중계산 여부 확인 전 제외. ΔD3 열은 참고 계산으로만 제공."
+    },
+    {
+      "id": "B04",
+      "priority": "높음",
+      "title": "Se/Te 명칭 불일치",
+      "source": "영섭-인수인계!A19:B35",
+      "fact": "1-Se-5a-2DDQ 파일 실제 원자번호52 두 개. Se 경로 아님.",
+      "action": "Te 전반 탭으로 분류. 파일명 원문은 추적용 보존."
+    },
+    {
+      "id": "B05",
+      "priority": "높음",
+      "title": "입력파일 손상",
+      "source": "1-Se-5a-2DDQ-AfterCStoOS-forNHabs-scan.inp",
+      "fact": "223,088,640 bytes binary. 실제 output의 %chk=/scratch/ohys5799/...-scan.inp. 체크포인트를 inp 이름으로 생성.",
+      "action": "원본 복구와 %chk=.chk 수정 후 재제출 필요. 이번 검토에서는 수정·제출하지 않음."
+    },
+    {
+      "id": "B06",
+      "priority": "높음",
+      "title": "FileIO 실패",
+      "source": "bb",
+      "fact": "여러 output에 FileIO operation on non-existent file / NtrErr. 정상 freq/에너지 없음.",
+      "action": "실패한 endpoint를 에너지 도식에 사용하지 말고 checkpoint 및 upstream 성공부터 복구."
+    },
+    {
+      "id": "B07",
+      "priority": "높음",
+      "title": "singlet 전자상태 불일치",
+      "source": "Te-P2 및 AfterCStoOS",
+      "fact": "singlet 입력인데 S² 0~1.02로 바뀜. broken-symmetry 및 해 전환 가능.",
+      "action": "stable=opt, 전하·spin population, 연속 SCF branch 검증. singlet/triplet/BS 별도 비교."
+    },
+    {
+      "id": "B08",
+      "priority": "높음",
+      "title": "cleavage TS 불충분",
+      "source": "1-DDQ-SeC-EEbreak-scan2-freq-ts-freq.out",
+      "fact": "허수진동 −8.187, −3.2932 cm⁻¹ 두 개. 단일 반응좌표 TS로 검증되지 않음.",
+      "action": "큰 Se–Se cleavage/C–Se 형성 모드와 양방향 IRC 확보."
+    },
+    {
+      "id": "B09",
+      "priority": "높음",
+      "title": "다른 cleavage 후보도 불충분",
+      "source": "1-DDQ-NH-Radical-scan3-SeC-scan-freq-ts-freq.out",
+      "fact": "허수진동 −34.7632, −8.5518, −4.0744 cm⁻¹ 세 개.",
+      "action": "동일하게 재최적화 및 반응좌표 확인."
+    },
+    {
+      "id": "B10",
+      "priority": "높음",
+      "title": "최신 결과의 실제 반응",
+      "source": "Se-P5 forEEbreak",
+      "fact": "11/16 완료 세트는 proton transfer. Se–Se 2.386~2.388 Å로 결합 유지.",
+      "action": "cleavage 완료로 표기하지 않음. 전반 경로 연결 미완료."
+    },
+    {
+      "id": "B11",
+      "priority": "중간",
+      "title": "RC/PC 열 충돌",
+      "source": "Se (정리)!B20:C22, B30:C32",
+      "fact": "B열은 proton 제거 방향과 일치. C열은 반대.",
+      "action": "구조로 방향 확정: 두 Et3N 단계 모두 rev=RC, fwd=PC."
+    },
+    {
+      "id": "B12",
+      "priority": "중간",
+      "title": "작은 허수진동 잔존",
+      "source": "Se-A1 PC; 이전 Last Annulation Se rev",
+      "fact": "−11.6908 cm⁻¹; 이전 양전하 모델 −15.8227 cm⁻¹.",
+      "action": "tight opt, ultrafine grid, low-frequency 처리 후 G 확인."
+    },
+    {
+      "id": "B13",
+      "priority": "중간",
+      "title": "모델 조성 혼합",
+      "source": "BF3 associate 47 atoms; Last Annulation 55 atoms,+1; Output 69 atoms,0",
+      "fact": "서로 다른 spectator와 총전하를 가진 이전 모델.",
+      "action": "69원자 중성 모델을 후반 주경로로 선택. 과거 모델 에너지는 합치지 않음."
+    },
+    {
+      "id": "B14",
+      "priority": "중간",
+      "title": "이전 로컬 출력 미완료",
+      "source": "Se-B-forAnnulation-opt.out 및 Te-B-new2...ircfwd-opt.out",
+      "fact": "SCF 반복 중 종료. 로컬 snapshot만으로 현재 실행중 판정 불가.",
+      "action": "정상 종료되는 대응 계산과 혼동 금지. 파일별 판정 유지."
+    },
+    {
+      "id": "B15",
+      "priority": "중간",
+      "title": "분리종 열역학과 complex 장벽 구분",
+      "source": "Separate",
+      "fact": "분리종의 엔트로피·농도 기준은 complex와 다름.",
+      "action": "분리종 ΔG는 반응열역학만 나타냄. TS 없는 구간의 장벽으로 쓰지 않음."
+    },
+    {
+      "id": "B16",
+      "priority": "중간",
+      "title": "IRC 길이 제한",
+      "source": "ircrev",
+      "fact": "각 10 points로 정상 종료. 끝점 재최적화 및 freq 최소점 확인.",
+      "action": "정상 종료를 IRC 전체 수렴과 동일시하지 않음. 연결이 의심되면 maxpoints 확장."
+    },
+    {
+      "id": "B17",
+      "priority": "중간",
+      "title": "분산 보정 provenance",
+      "source": "주경로 output route vs 시트 Dispersion I열",
+      "fact": "B3LYP route에 empiricaldispersion 없음. I열 외부 D3의 방법/기하 일치가 확인되지 않음.",
+      "action": "기본 G는 E_TZVPP+Gcorr_SVP. 외부 D3 포함 값은 별도 조건부 열."
+    },
+    {
+      "id": "B18",
+      "priority": "중간",
+      "title": "실행중 여부",
+      "source": "Lion head node 및 파일 snapshot",
+      "fact": "2026-11-16 기준 최신 완료 파일 확인. head node 관련 runner는 보이지 않음. compute node 전체 실행 상태는 미확인.",
+      "action": "시트 색만으로 실행중/완료 판단하지 않음. scheduler/compute-node 로그 추가 필요."
+    }
+  ],
+  "groups": [
+    {
+      "id": "Se-P1",
+      "element": "Se",
+      "phase": "전반",
+      "title": "첫 C–H hydride transfer",
+      "notes": "C60–H61: 1.100→3.335 Å. O64–H61: 2.626→0.974 Å. DDQ로 H 이동.",
+      "states": [
+        {
+          "state": "RC",
+          "relG": 0.0,
+          "Gcomp": -7666.45781866,
+          "file": "2a-DDQ-CH-first-scan-freq-ts-freq-ircrev-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 0.0,
+          "bbFile": "2a-DDQ-CH-first-scan-freq-ts-freq-ircrev-opt-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "TS",
+          "relG": 15.807139352750832,
+          "Gcomp": -7666.43262838,
+          "file": "2a-DDQ-CH-first-scan-freq-ts-freq.out",
+          "normal": true,
+          "imag": [
+            -1530.3435
+          ],
+          "s2": 0.0,
+          "bbFile": "2a-DDQ-CH-first-scan-freq-ts-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "PC",
+          "relG": -26.339408966421978,
+          "Gcomp": -7666.49979318,
+          "file": "2a-DDQ-CH-first-scan-freq-ts-freq-ircfwd-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 0.0,
+          "bbFile": "2a-DDQ-CH-first-scan-freq-ts-freq-ircfwd-opt-freq-bb.out",
+          "bbNormal": true
+        }
+      ]
+    },
+    {
+      "id": "Se-P2",
+      "element": "Se",
+      "phase": "전반",
+      "title": "첫 N–H proton transfer",
+      "notes": "N29–H51: 1.041→1.898 Å. Et3N의 N83–H51: 2.115→1.063 Å. B열 RC/PC가 구조와 맞음.",
+      "states": [
+        {
+          "state": "RC",
+          "relG": 0.0,
+          "Gcomp": -6472.69414423,
+          "file": "1-ET3N-NH-protonabs-scan-freq-ts-freq-ircrev-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 0.0,
+          "bbFile": "1-ET3N-NH-protonabs-scan-freq-ts-freq-ircrev-opt-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "TS",
+          "relG": 5.162771446179709,
+          "Gcomp": -6472.685916830001,
+          "file": "1-ET3N-NH-protonabs-scan-freq-ts-freq.out",
+          "normal": true,
+          "imag": [
+            -1235.1744
+          ],
+          "s2": 0.0,
+          "bbFile": "1-ET3N-NH-protonabs-scan-freq-ts-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "PC",
+          "relG": 0.2590861116958004,
+          "Gcomp": -6472.69373135,
+          "file": "1-ET3N-NH-protonabs-scan-freq-ts-freq-ircfwd-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 0.0,
+          "bbFile": "1-ET3N-NH-protonabs-scan-freq-ts-freq-ircfwd-opt-freq-bb.out",
+          "bbNormal": true
+        }
+      ]
+    },
+    {
+      "id": "Se-P3",
+      "element": "Se",
+      "phase": "전반",
+      "title": "둘째 C–H hydride transfer",
+      "notes": "C58–H59: 1.100→5.276 Å. O62–H59: 2.682→0.972 Å. 이 단계는 fwd가 RC.",
+      "states": [
+        {
+          "state": "RC",
+          "relG": 0.0,
+          "Gcomp": -7665.25821373,
+          "file": "1-2a-DDQ-CH-third-freq-ts-freq-ircfwd-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 0.0,
+          "bbFile": "1-2a-DDQ-CH-third-freq-ts-freq-ircfwd-opt-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "TS",
+          "relG": 15.038935978923066,
+          "Gcomp": -7665.234247660001,
+          "file": "1-2a-DDQ-CH-third-freq-ts-freq.out",
+          "normal": true,
+          "imag": [
+            -1474.5589
+          ],
+          "s2": 0.0,
+          "bbFile": "1-2a-DDQ-CH-third-freq-ts-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "PC",
+          "relG": -23.894061022893688,
+          "Gcomp": -7665.296291340001,
+          "file": "1-2a-DDQ-CH-third-freq-ts-freq-ircrev-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 0.0,
+          "bbFile": "1-2a-DDQ-CH-third-freq-ts-freq-ircrev-opt-freq-bb.out",
+          "bbNormal": true
+        }
+      ]
+    },
+    {
+      "id": "Se-P4",
+      "element": "Se",
+      "phase": "전반",
+      "title": "둘째 N–H proton transfer",
+      "notes": "N29–H50: 1.040→1.883 Å. N81–H50: 2.125→1.064 Å. B열 RC/PC가 구조와 맞음.",
+      "states": [
+        {
+          "state": "RC",
+          "relG": 0.0,
+          "Gcomp": -6471.493222,
+          "file": "1-Et3N-NH-protonabs-fourth-freq-ts-freq-ircrev-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 0.0,
+          "bbFile": "1-Et3N-NH-protonabs-fourth-freq-ts-freq-ircrev-opt-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "TS",
+          "relG": 5.498350962513045,
+          "Gcomp": -6471.484459820001,
+          "file": "1-Et3N-NH-protonabs-fourth-freq-ts-freq.out",
+          "normal": true,
+          "imag": [
+            -1232.6627
+          ],
+          "s2": 0.0,
+          "bbFile": "1-Et3N-NH-protonabs-fourth-freq-ts-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "PC",
+          "relG": 0.20577918175369808,
+          "Gcomp": -6471.49289407,
+          "file": "1-Et3N-NH-protonabs-fourth-freq-ts-freq-ircfwd-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 0.0,
+          "bbFile": "1-Et3N-NH-protonabs-fourth-freq-ts-freq-ircfwd-opt-freq-bb.out",
+          "bbNormal": true
+        }
+      ]
+    },
+    {
+      "id": "Se-P5",
+      "element": "Se",
+      "phase": "전반",
+      "title": "최신 forEEbreak proton transfer",
+      "notes": "탈양성자화 방향은 fwd→rev. Se13–Se14: 2.386→2.388 Å로 보존. cleavage TS 아님. 최신 bb 2026-11-16 01:26 KST.",
+      "states": [
+        {
+          "state": "RC",
+          "relG": 0.0,
+          "Gcomp": -6471.04571897,
+          "file": "1-Et3N-NH-protonabs-forEEbreak-scan-freq-ts-freq-ircfwd-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 0.0,
+          "bbFile": "1-Et3N-NH-protonabs-forEEbreak-scan-freq-ts-freq-ircfwd-opt-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "TS",
+          "relG": 6.389696795612875,
+          "Gcomp": -6471.035536339999,
+          "file": "1-Et3N-NH-protonabs-forEEbreak-scan-freq-ts-freq.out",
+          "normal": true,
+          "imag": [
+            -959.9344
+          ],
+          "s2": 0.0,
+          "bbFile": "1-Et3N-NH-protonabs-forEEbreak-scan-freq-ts-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "PC",
+          "relG": 7.619885193475064,
+          "Gcomp": -6471.03357591,
+          "file": "1-Et3N-NH-protonabs-forEEbreak-scan-freq-ts-freq-ircrev-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 0.0,
+          "bbFile": "1-Et3N-NH-protonabs-forEEbreak-scan-freq-ts-freq-ircrev-opt-freq-bb.out",
+          "bbNormal": true
+        }
+      ]
+    },
+    {
+      "id": "Se-A1",
+      "element": "Se",
+      "phase": "후반",
+      "title": "C–H proton abstraction by Et3N",
+      "notes": "C14–H26: 1.110 Å에서 Et3N N69–H26 1.042 Å로 이동. PC에 −11.69 cm⁻¹ 작은 허수진동 잔존.",
+      "states": [
+        {
+          "state": "RC",
+          "relG": 0.0,
+          "Gcomp": -3939.44064526,
+          "file": "1-Se-5a-BF3Et2O-Et3N-forHabs-pyrrot-freq-ts-freq-ircfwd-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 0.0,
+          "bbFile": "1-Se-5a-BF3Et2O-Et3N-forHabs-pyrrot-freq-ts-freq-ircfwd-opt-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "TS",
+          "relG": 11.229683643297184,
+          "Gcomp": -3939.42274962,
+          "file": "1-Se-5a-BF3Et2O-Et3N-forHabs-pyrrot-freq-ts-freq.out",
+          "normal": true,
+          "imag": [
+            -1133.7591
+          ],
+          "s2": 0.0,
+          "bbFile": "1-Se-5a-BF3Et2O-Et3N-forHabs-pyrrot-freq-ts-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "PC",
+          "relG": -7.831801417759125,
+          "Gcomp": -3939.45312603,
+          "file": "1-Se-5a-BF3Et2O-Et3N-forHabs-pyrrot-freq-ts-freq-ircrev-opt-freq.out",
+          "normal": true,
+          "imag": [
+            -11.6908
+          ],
+          "s2": 0.0,
+          "bbFile": "1-Se-5a-BF3Et2O-Et3N-forHabs-pyrrot-freq-ts-freq-ircrev-opt-freq-bb.out",
+          "bbNormal": true
+        }
+      ]
+    },
+    {
+      "id": "Se-A2",
+      "element": "Se",
+      "phase": "후반",
+      "title": "BF3 배위와 첫 B–N 형성",
+      "notes": "B29–N23: 4.040→1.577 Å. B29–O30: 1.598→4.031 Å. Et2O 치환.",
+      "states": [
+        {
+          "state": "RC",
+          "relG": 0.0,
+          "Gcomp": -3939.45211467,
+          "file": "1-Se-5a-BF3Et2O-Et3N-forBNbond-pyrrot-freq-ts-freq-ircrev-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 0.0,
+          "bbFile": "1-Se-5a-BF3Et2O-Et3N-forBNbond-pyrrot-freq-ts-freq-ircrev-opt-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "TS",
+          "relG": 8.40192515040983,
+          "Gcomp": -3939.43872535,
+          "file": "1-Se-5a-BF3Et2O-Et3N-forBNbond-pyrrot-freq-ts-freq.out",
+          "normal": true,
+          "imag": [
+            -142.79
+          ],
+          "s2": 0.0,
+          "bbFile": "1-Se-5a-BF3Et2O-Et3N-forBNbond-pyrrot-freq-ts-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "PC",
+          "relG": -19.826845816495346,
+          "Gcomp": -3939.48371076,
+          "file": "1-Se-5a-BF3Et2O-Et3N-forBNbond-pyrrot-freq-ts-freq-ircfwd-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 0.0,
+          "bbFile": "1-Se-5a-BF3Et2O-Et3N-forBNbond-pyrrot-freq-ts-freq-ircfwd-opt-freq-bb.out",
+          "bbNormal": true
+        }
+      ]
+    },
+    {
+      "id": "Se-A3",
+      "element": "Se",
+      "phase": "후반",
+      "title": "두 번째 B–N 형성 및 HF 생성",
+      "notes": "B29–N19: 3.129→1.550 Å. B29–F47: 1.456→4.587 Å. F47–H26: 1.708→1.079 Å.",
+      "states": [
+        {
+          "state": "RC",
+          "relG": 0.0,
+          "Gcomp": -3939.4858865700003,
+          "file": "1-Se-5a-BF3Et2O-Et3N-forSecondBNbond-opt2-freq-ts-freq-ircrev-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 0.0,
+          "bbFile": "1-Se-5a-BF3Et2O-Et3N-forSecondBNbond-opt2-freq-ts-freq-ircrev-opt-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "TS",
+          "relG": 16.157873222989252,
+          "Gcomp": -3939.4601373600003,
+          "file": "1-Se-5a-BF3Et2O-Et3N-forSecondBNbond-opt2-freq-ts-freq.out",
+          "normal": true,
+          "imag": [
+            -465.8169
+          ],
+          "s2": 0.0,
+          "bbFile": "1-Se-5a-BF3Et2O-Et3N-forSecondBNbond-opt2-freq-ts-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "PC",
+          "relG": -20.89301578819642,
+          "Gcomp": -3939.5191817100003,
+          "file": "1-Se-5a-BF3Et2O-Et3N-forSecondBNbond-opt2-freq-ts-freq-ircfwd-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 0.0,
+          "bbFile": "1-Se-5a-BF3Et2O-Et3N-forSecondBNbond-opt2-freq-ts-freq-ircfwd-opt-freq-bb.out",
+          "bbNormal": true
+        }
+      ]
+    },
+    {
+      "id": "Te-A1",
+      "element": "Te",
+      "phase": "후반",
+      "title": "C–H proton abstraction by Et3N",
+      "notes": "C14–H26: 1.106→3.849 Å. N69–H26: 2.339→1.115 Å. 서버에서 세트 확보, 시트상 과거 진행중 표기 갱신 필요.",
+      "states": [
+        {
+          "state": "RC",
+          "relG": 0.0,
+          "Gcomp": -1805.96420008,
+          "file": "1-Te-Et3N-Et2O-NB-forHabs-opt-freq-ts-freq-ircfwd-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 0.0,
+          "bbFile": "1-Te-Et3N-Et2O-NB-forHabs-opt-freq-ts-freq-ircfwd-opt-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "TS",
+          "relG": 13.395350615119618,
+          "Gcomp": -1805.9428532299999,
+          "file": "1-Te-Et3N-Et2O-NB-forHabs-opt-freq-ts-freq.out",
+          "normal": true,
+          "imag": [
+            -1266.9544
+          ],
+          "s2": 0.0,
+          "bbFile": "1-Te-Et3N-Et2O-NB-forHabs-opt-freq-ts-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "PC",
+          "relG": -12.284181938797058,
+          "Gcomp": -1805.9837761699998,
+          "file": "1-Te-Et3N-Et2O-NB-forHabs-opt-freq-ts-freq-ircrev-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 0.0,
+          "bbFile": "1-Te-Et3N-Et2O-NB-forHabs-opt-freq-ts-freq-ircrev-opt-freq-bb.out",
+          "bbNormal": true
+        }
+      ]
+    },
+    {
+      "id": "Te-A2",
+      "element": "Te",
+      "phase": "후반",
+      "title": "BF3 배위와 첫 B–N 형성",
+      "notes": "B29–N23: 4.514→1.577 Å. B29–O30: 1.599→4.072 Å. proton 배치도 함께 변함.",
+      "states": [
+        {
+          "state": "RC",
+          "relG": 0.0,
+          "Gcomp": -1805.98498208,
+          "file": "1-Te-Et3N-Et2O-NB-backscan-freq-ts-freq-ircrev-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 0.0,
+          "bbFile": "1-Te-Et3N-Et2O-NB-backscan-freq-ts-freq-ircrev-opt-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "TS",
+          "relG": 13.574222190542038,
+          "Gcomp": -1805.9633501800001,
+          "file": "1-Te-Et3N-Et2O-NB-backscan-freq-ts-freq.out",
+          "normal": true,
+          "imag": [
+            -160.2117
+          ],
+          "s2": 0.0,
+          "bbFile": "1-Te-Et3N-Et2O-NB-backscan-freq-ts-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "PC",
+          "relG": -12.559363668499557,
+          "Gcomp": -1806.0049967,
+          "file": "1-Te-Et3N-Et2O-NB-backscan-freq-ts-freq-ircfwd-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 0.0,
+          "bbFile": "1-Te-Et3N-Et2O-NB-backscan-freq-ts-freq-ircfwd-opt-freq-bb.out",
+          "bbNormal": true
+        }
+      ]
+    },
+    {
+      "id": "Te-A3",
+      "element": "Te",
+      "phase": "후반",
+      "title": "두 번째 B–N 형성 및 HF 생성",
+      "notes": "B29–N19: 3.183→1.546 Å. B29–F47: 1.442→4.556 Å. F47–H26: 1.807→1.042 Å.",
+      "states": [
+        {
+          "state": "RC",
+          "relG": 0.0,
+          "Gcomp": -1806.00651241,
+          "file": "1-Te-Et3N-Et2O-NB-scan-2-freq-ts-freq-ircrev-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 0.0,
+          "bbFile": "1-Te-Et3N-Et2O-NB-scan-2-freq-ts-freq-ircrev-opt-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "TS",
+          "relG": 19.913711952905242,
+          "Gcomp": -1805.9747778899998,
+          "file": "1-Te-Et3N-Et2O-NB-scan-2-freq-ts-freq.out",
+          "normal": true,
+          "imag": [
+            -487.6908
+          ],
+          "s2": 0.0,
+          "bbFile": "1-Te-Et3N-Et2O-NB-scan-2-freq-ts-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "PC",
+          "relG": -16.851459444783618,
+          "Gcomp": -1806.0333669200002,
+          "file": "1-Te-Et3N-Et2O-NB-scan-2-freq-ts-freq-ircfwd-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 0.0,
+          "bbFile": "1-Te-Et3N-Et2O-NB-scan-2-freq-ts-freq-ircfwd-opt-freq-bb.out",
+          "bbNormal": true
+        }
+      ]
+    },
+    {
+      "id": "Te-P1",
+      "element": "Te",
+      "phase": "전반",
+      "title": "2DDQ 경로 C–H transfer",
+      "notes": "파일명의 Se는 오표기. 실제 Te52 두 원자. C60–H61: 1.102→3.539 Å, O64–H61: 2.522→0.975 Å.",
+      "states": [
+        {
+          "state": "RC",
+          "relG": 0.0,
+          "Gcomp": -4884.86713882,
+          "file": "1-Se-5a-2DDQ-forCHabs-scan-opt-freq-ts-freq-ircfwd-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 0.0,
+          "bbFile": "1-Se-5a-2DDQ-forCHabs-scan-opt-freq-ts-freq-ircfwd-opt-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "TS",
+          "relG": 15.681273502626734,
+          "Gcomp": -4884.84214912,
+          "file": "1-Se-5a-2DDQ-forCHabs-scan-opt-freq-ts-freq.out",
+          "normal": true,
+          "imag": [
+            -1534.2218
+          ],
+          "s2": 0.0,
+          "bbFile": "1-Se-5a-2DDQ-forCHabs-scan-opt-freq-ts-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "PC",
+          "relG": -24.62703601358601,
+          "Gcomp": -4884.9063845,
+          "file": "1-Se-5a-2DDQ-forCHabs-scan-opt-freq-ts-freq-ircrev-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 0.0,
+          "bbFile": "1-Se-5a-2DDQ-forCHabs-scan-opt-freq-ts-freq-ircrev-opt-freq-bb.out",
+          "bbNormal": true
+        }
+      ]
+    },
+    {
+      "id": "Te-P2",
+      "element": "Te",
+      "phase": "전반",
+      "title": "CS/OS 전자상태 변화 후보",
+      "notes": "fwd S²=0.0000, TS=0.6315, rev=1.0167. 모두 입력 0 1. 단순 proton-transfer 장벽으로 사용 불가. stability 검증 필요.",
+      "states": [
+        {
+          "state": "RC",
+          "relG": 0.0,
+          "Gcomp": -4884.9194098299995,
+          "file": "1-Se-5a-2DDQ-AfterCHabs-forNHabs-scan-freq-ts-freq-ircfwd-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 0.0,
+          "bbFile": "1-Se-5a-2DDQ-AfterCHabs-forNHabs-scan-freq-ts-freq-ircfwd-opt-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "TS",
+          "relG": -2.305124677805342,
+          "Gcomp": -4884.92308328,
+          "file": "1-Se-5a-2DDQ-AfterCHabs-forNHabs-scan-freq-ts-freq.out",
+          "normal": true,
+          "imag": [
+            -1581.8707
+          ],
+          "s2": 0.6315,
+          "bbFile": "1-Se-5a-2DDQ-AfterCHabs-forNHabs-scan-freq-ts-freq-bb.out",
+          "bbNormal": true
+        },
+        {
+          "state": "PC",
+          "relG": -2.5730021972860198,
+          "Gcomp": -4884.923510170001,
+          "file": "1-Se-5a-2DDQ-AfterCHabs-forNHabs-scan-freq-ts-freq-ircrev-opt-freq.out",
+          "normal": true,
+          "imag": [],
+          "s2": 1.0167,
+          "bbFile": "1-Se-5a-2DDQ-AfterCHabs-forNHabs-scan-freq-ts-freq-ircrev-opt-freq-bb.out",
+          "bbNormal": true
+        }
+      ]
+    }
+  ]
+}
