@@ -1,38 +1,50 @@
 {
-  "checkedAt": "2026-11-16T19:20:05.072101+09:00",
+  "checkedAt": "2026-11-16T19:25:24.260279+09:00",
   "jobs": [
     {
       "job": "5-MnIII-12MTP-PPA-AfterCoord-forPHA-2",
       "node": "lion42",
-      "time": "2026-11-16T19:20:02.720271",
+      "time": "2026-11-16T19:25:03.257387",
       "ts_validated_frequency": false,
       "endpoints": {},
       "ts_result": null,
-      "state": "running",
-      "stage": "5-MnIII-12MTP-PPA-AfterCoord-forPHA-2-freq-ts-freq",
-      "kind": "ts_frequency",
+      "state": "needs_review",
+      "stage": "5-MnIII-12MTP-PPA-AfterCoord-forPHA-3-qst2",
+      "kind": "ts_search",
       "completed": [
         "5-MnIII-12MTP-PPA-AfterCoord-forPHA-2-freq",
-        "5-MnIII-12MTP-PPA-AfterCoord-forPHA-2-freq-ts"
+        "5-MnIII-12MTP-PPA-AfterCoord-forPHA-2-freq-ts",
+        "5-MnIII-12MTP-PPA-AfterCoord-forPHA-2-freq-ts-freq"
       ],
       "scratch": "/scratch/skylark/ppa12-recovery-dee0q9ei",
       "pid": 480770,
-      "gaussian_pid": 881747,
-      "heartbeat": "2026-11-16T19:20:02.718265",
-      "elapsed_seconds": 3842,
-      "last_completed": "5-MnIII-12MTP-PPA-AfterCoord-forPHA-2-freq-ts",
+      "gaussian_pid": 921760,
+      "heartbeat": "2026-11-16T19:25:03.239957",
+      "elapsed_seconds": 30,
+      "last_completed": "5-MnIII-12MTP-PPA-AfterCoord-forPHA-2-freq-ts-freq",
+      "attempt_failures": [
+        {
+          "attempt": "5-MnIII-12MTP-PPA-AfterCoord-forPHA-2-freq-ts",
+          "reason": "TS frequency gate failed"
+        },
+        {
+          "attempt": "5-MnIII-12MTP-PPA-AfterCoord-forPHA-3-qst2",
+          "reason": "Gaussian failed 5-MnIII-12MTP-PPA-AfterCoord-forPHA-3-qst2 rc=1"
+        }
+      ],
+      "reason": "Bounded TS candidates exhausted without verified connection",
       "observation": {
-        "outputFile": "5-MnIII-12MTP-PPA-AfterCoord-forPHA-2-freq-ts-freq.out",
-        "bytes": 122739,
-        "modifiedAt": "2026-11-16T19:19:59.308313+09:00",
-        "lastScfEh": -2491.55900197,
+        "outputFile": "5-MnIII-12MTP-PPA-AfterCoord-forPHA-3-qst2.out",
+        "bytes": 45291,
+        "modifiedAt": "2026-11-16T19:24:35.401089+09:00",
+        "lastScfEh": null,
         "lastOptimizationStep": null,
         "completedScanPoints": 0,
         "imaginaryFrequencies": [],
         "normalTermination": false,
-        "abnormalTermination": false,
-        "fmmDisabled": true,
-        "gaussianAlive": true
+        "abnormalTermination": true,
+        "fmmDisabled": false,
+        "gaussianAlive": false
       }
     },
     {
@@ -65,7 +77,7 @@
     {
       "job": "5-MnIII-12MTP-PPA-forCoord-3",
       "node": "lion43",
-      "time": "2026-11-16T19:20:02.445596",
+      "time": "2026-11-16T19:25:02.601249",
       "ts_validated_frequency": false,
       "endpoints": {},
       "ts_result": null,
@@ -76,14 +88,14 @@
       "scratch": "/scratch/skylark/ppa12-recovery-9ggin3ls",
       "pid": 535525,
       "gaussian_pid": 535527,
-      "heartbeat": "2026-11-16T19:20:02.443892",
-      "elapsed_seconds": 44130,
+      "heartbeat": "2026-11-16T19:25:02.600158",
+      "elapsed_seconds": 44430,
       "observation": {
         "outputFile": "5-MnIII-12MTP-PPA-forCoord-3-qst2.out",
-        "bytes": 17609228,
-        "modifiedAt": "2026-11-16T19:19:57.027290+09:00",
-        "lastScfEh": -2491.53101691,
-        "lastOptimizationStep": 182,
+        "bytes": 17718493,
+        "modifiedAt": "2026-11-16T19:25:24.704583+09:00",
+        "lastScfEh": -2491.5310331,
+        "lastOptimizationStep": 183,
         "completedScanPoints": 0,
         "imaginaryFrequencies": [],
         "normalTermination": false,
