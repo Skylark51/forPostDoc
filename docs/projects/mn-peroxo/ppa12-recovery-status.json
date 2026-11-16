@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-11-16T18:48:18.060407+09:00",
+  "checkedAt": "2026-11-16T19:04:10.924416+09:00",
   "jobs": [
     {
       "job": "5-MnIII-12MTP-PPA-AfterCoord-forPHA-2",
       "node": "lion42",
-      "time": "2026-11-16T18:48:01.704070",
+      "time": "2026-11-16T19:04:02.201791",
       "ts_validated_frequency": false,
       "endpoints": {},
       "ts_result": null,
@@ -18,13 +18,13 @@
       "scratch": "/scratch/skylark/ppa12-recovery-dee0q9ei",
       "pid": 480770,
       "gaussian_pid": 881747,
-      "heartbeat": "2026-11-16T18:48:01.699894",
-      "elapsed_seconds": 1921,
+      "heartbeat": "2026-11-16T19:04:02.196919",
+      "elapsed_seconds": 2881,
       "last_completed": "5-MnIII-12MTP-PPA-AfterCoord-forPHA-2-freq-ts",
       "observation": {
         "outputFile": "5-MnIII-12MTP-PPA-AfterCoord-forPHA-2-freq-ts-freq.out",
-        "bytes": 62611,
-        "modifiedAt": "2026-11-16T18:41:25.075861+09:00",
+        "bytes": 62878,
+        "modifiedAt": "2026-11-16T19:03:26.026086+09:00",
         "lastScfEh": -2491.55900197,
         "lastOptimizationStep": null,
         "completedScanPoints": 0,
@@ -65,7 +65,7 @@
     {
       "job": "5-MnIII-12MTP-PPA-forCoord-3",
       "node": "lion43",
-      "time": "2026-11-16T18:48:01.417896",
+      "time": "2026-11-16T19:04:01.894931",
       "ts_validated_frequency": false,
       "endpoints": {},
       "ts_result": null,
@@ -76,19 +76,19 @@
       "scratch": "/scratch/skylark/ppa12-recovery-9ggin3ls",
       "pid": 535525,
       "gaussian_pid": 535527,
-      "heartbeat": "2026-11-16T18:48:01.416316",
-      "elapsed_seconds": 42209,
+      "heartbeat": "2026-11-16T19:04:01.892309",
+      "elapsed_seconds": 43169,
       "observation": {
         "outputFile": "5-MnIII-12MTP-PPA-forCoord-3-qst2.out",
-        "bytes": 16751497,
-        "modifiedAt": "2026-11-16T18:48:12.395030+09:00",
-        "lastScfEh": -2491.53101559,
-        "lastOptimizationStep": 173,
+        "bytes": 17219165,
+        "modifiedAt": "2026-11-16T19:04:11.703535+09:00",
+        "lastScfEh": -2491.53100392,
+        "lastOptimizationStep": 178,
         "completedScanPoints": 0,
         "imaginaryFrequencies": [],
         "normalTermination": false,
         "abnormalTermination": false,
-        "fmmDisabled": true,
+        "fmmDisabled": false,
         "gaussianAlive": true
       }
     }
