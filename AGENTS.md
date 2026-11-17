@@ -17,3 +17,8 @@
 - opt, freq, BB는 별도 input과 별도 출력으로 분리한다.
 - integral=ultrafine, tight, maxcycles, calcfc 등 옵션을 임의로 추가하지 않는다. scan·IRC·TS 옵션은 해당 원본 템플릿을 따른다.
 - 새 반응 좌표나 QST2·stable 진단처럼 목적상 필요한 계산 종류만 구분하고, 그 외 공통 형식과 계산 조건을 유지한다.
+
+
+# 공통 편집 전 확인
+
+모든 연구 프로젝트에서 HTML·계산 파일·Excel/Google Sheets를 편집하기 전에 `docs/editing-policy.html`과 해당 프로젝트의 AGENTS.md 및 HTML 지침을 매번 읽는다. 사용자 2026-11-17 공통 지침을 따른다. 시트 추가·삭제는 사용자의 명시적 요청 범위에서만 수행한다. 기존 계산 조건은 프로젝트별 원본 wf/input.sh와 대조한다.
