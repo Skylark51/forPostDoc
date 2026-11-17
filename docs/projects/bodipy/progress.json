@@ -158,7 +158,7 @@
       "title": "작은 허수진동 잔존",
       "source": "Se-A1 PC; 이전 Last Annulation Se rev",
       "fact": "−11.6908 cm⁻¹; 이전 양전하 모델 −15.8227 cm⁻¹.",
-      "action": "tight opt, ultrafine grid, low-frequency 처리 후 G 확인."
+      "action": "원본 wf/input.sh와 동일 조건에서 구조·저주파 모드를 대조하고 후속 계산 계획과 G를 검토."
     },
     {
       "id": "B13",
@@ -784,5 +784,11 @@
         }
       ]
     }
-  ]
+  ],
+  "guidelines": {
+    "effectiveDate": "2026-11-17",
+    "url": "workflow-guidelines.html",
+    "agentInstructions": "AGENTS.md",
+    "scope": "BODIPY 계산·시트·HTML 편집"
+  }
 }
